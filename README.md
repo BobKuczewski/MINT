@@ -71,7 +71,7 @@ Here is an example of a simple MINT program that uses RPN:
 ```
 
 As the interpreter encounters numbers it pushes them on to the stack. Then it encounters the
-`+` operator which is uses to add the two items on the stack and pushes the result back on the stack.
+`+` operator which it uses to add the two items on the stack and pushes the result back on the stack.
 The result becomes the data for the `.` operator which prints the number to the console.
 
 ## <a name='numbers-in-mint'></a>Numbers in MINT
@@ -121,7 +121,7 @@ prints `The value of x is 100`
 
 In MINT, the stack is a central data structure that stores values temporarily.
 It's essential to master stack manipulation to write effective code. Let's explore
-some fundamental operator that help you manage the stack
+some fundamental operators that help you manage the stack
 
 ### <a name='duplicate'></a>Duplicate
 
@@ -145,7 +145,7 @@ The code prints `20`
 
 ### <a name='swap'></a>Swap
 
-The `$` of "swap" operator exchanges the positions of the top two elements on the stack.
+The `$` or "swap" operator exchanges the positions of the top two elements on the stack.
 
 ```
 40 50 $ . .
@@ -155,7 +155,7 @@ The code prints `50 40`
 
 ### <a name='over'></a>Over
 
-The `%` of "over" operator copies the second element from the top of the stack and
+The `%` or "over" operator copies the second element from the top of the stack and
 places it on top.
 
 ```
@@ -170,7 +170,7 @@ The code prints `70 60 70`
 10 20 + .
 ```
 
-This program adds `20` from `10` which results in the value `30`
+This program adds `20` to `10` which results in the value `30`
 The `.` operator prints the sum.
 
 ```
@@ -274,7 +274,7 @@ prints 000B
 
 Variables are named locations in memory that can store data. MINT has a limited
 number of global variables which have single letter names. In MINT a variable can
-be referred to by a singer letter from `a` to `z` so there are 26
+be referred to by a single letter from `a` to `z` so there are 26
 global variables in MINT. Global variables can be used to store numbers, strings, arrays, blocks, functions etc.
 
 To assign the value `10` to the global variable `x` use the `!` operator.
@@ -348,7 +348,7 @@ These can then be allocated to a variable, which acts as a pointer to the array 
 [ 1 2 3 4 5 6 7 8 9 0 ] a !
 ```
 
-To fetch the Nth member of the array, we can create use the index operator `?`
+To fetch the Nth member of the array, we can use the index operator `?`
 
 The following prints the item at index 2 (which is 3).
 
@@ -382,7 +382,7 @@ the first item of the inner array with `0?` and prints the result (which is 2).
 ### <a name='byte-arrays'></a>Byte arrays
 
 MINT by default declares arrays of 16 bit words however it is also possible to declare
-and array of 8 bit byte values by using `\` which puts MINT into `byte mode`.
+an array of 8 bit byte values by using `\` which puts MINT into `byte mode`.
 
 ```
  \[1 2 3]
@@ -407,13 +407,13 @@ Note: MINT will leave byte mode (and return to normal word mode) after it execut
 
 The final kind of memory allocation in MINT is the simplest raw memory allocation on the heap.
 
-This type of allocation is similar to arrays of bytes and are created using the `/A` allocation operator.
+This type of allocation is similar to arrays of bytes and is created using the `/A` allocation operator.
 
 ```
 1000 /A
 ```
 
-This code allocates a 1000 byte block of uninitialized memory and returns a pointer to the start of this block.
+This code allocates a 1000 byte block of uninitialized memory and returns a pointer to the start of the block.
 
 ## <a name='loops'></a>Loops
 
@@ -423,7 +423,8 @@ Looping in MINT is of the form
 number (code to execute)
 ```
 
-The number represents the number of times the code between parentheses will be repeated. If the number is zero then the code will be skipped. If the number
+The number represents the number of times the code between parentheses will be repeated. 
+If the number is zero then the code will be skipped. If the number
 is ten it will be repeated ten times. If the number is -1 then the loop will repeat forever.
 
 ```
@@ -457,7 +458,8 @@ This prints the numbers 0 to 9.
 10 ( /i . )
 ```
 
-Loops can repeat forever by specifying an "unlimited" loop with /U. These can be controlled with the "while" operator `/W`. Passing a false value to /W will terminate the loop.
+Loops can repeat forever by specifying an "unlimited" loop with /U. These can be controlled with the "while" operator `/W`. 
+Passing a false value to /W will terminate the loop.
 
 This code initialises `t` to zero and starts a loop to repeat 10 times.
 The code to repeat accesses the `/i` variable and compares it to 4. When `/i` exceeds 4 it breaks the loop.
@@ -469,7 +471,7 @@ Finally when the loop ends it prints the value of t which is 5.
 0t! /U(/i 4 < /W /i t 1+ t!) t .
 ```
 
-Loops can be nested and then special `/j` variable is provided to access the counter of the outer loop.
+Loops can be nested and then the special `/j` variable is provided to access the counter of the outer loop.
 
 The following has two nested loops with limits of 2. The two counter variables are summed and added to `t`.
 When the loop ends `t` prints 4.
@@ -495,7 +497,7 @@ The following tests if `x` is less that 5.
 x 5 < (`true`)
 ```
 
-The syntax for a MINT IF-THEN-ELSE or "if...else" operator in MINT is and
+The syntax for a MINT IF-THEN-ELSE or "if...else" operator in MINT is an
 extension of the loop syntax.
 
 ```
@@ -544,7 +546,7 @@ The following stores a function in the variable `Z`.
 :Z `hello` 1. 2. 3. ;
 ```
 
-Running the function by stored in uppercase `Z` by referring to it
+Run the function stored in uppercase `Z` by referring to it
 
 ```
 Z
@@ -618,7 +620,7 @@ A function at an address can be executed with the `/G` operator.
 This code declares an anonymous function and stores its address in `a`. This function will
 increment its argument by 1.
 
-The next line pushs the number 3 on the stack and executes the function in `a`.
+The next line pushes the number 3 on the stack and executes the function in `a`.
 The function adds 1 and prints 4 to the console.
 
 ```
